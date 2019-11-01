@@ -1,8 +1,7 @@
 # OwOficator
- OwOficator by SamF
 
 
-OwOficator is a tool to help you turn your text into OwOfied format.
+> OwOficator is a tool to help you turn your text into OwOfied format.
 
 ### Features UwU
 * Open and save text files
@@ -14,3 +13,5 @@ OwOficator is a tool to help you turn your text into OwOfied format.
 
 ### Instruction UwU
 Simply open a text file or type in the text editor area and click the OwOfied button.
+
+![Alt text](/Graphics/Capture.PNG)
