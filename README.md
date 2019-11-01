@@ -1,7 +1,7 @@
 # OwOficator
 
 
-> OwOficator is a tool to help you turn your text into OwOfied format.
+OwOficator is a tool to help you turn your text into OwOfied format.
 
 ### Features UwU
 * Open and save text files
