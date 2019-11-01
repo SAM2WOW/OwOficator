@@ -4,7 +4,10 @@
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText
 from tkinter import messagebox
-from time import strftime 
+from time import strftime
+from tkinter import filedialog
+from tkinter.filedialog import askopenfile
+from tkinter.filedialog import asksaveasfile
 
 class MyWindow:
     def __init__(self, win):
@@ -64,8 +67,8 @@ class MyWindow:
         files = Menu(menubar, tearoff = 0, bg="#73C6D9") 
         menubar.add_cascade(label ='File', menu = files) 
         files.add_command(label ='New File', command = self.notavaliable) 
-        files.add_command(label ='Open...', command = self.notavaliable) 
-        files.add_command(label ='Save', command = self.notavaliable) 
+        files.add_command(label ='Open...', command = self.file_open) 
+        files.add_command(label ='Save', command = self.file_save) 
         files.add_separator() 
         files.add_command(label ='Demo Texts', command = self.demotexts) 
         files.add_separator() 
@@ -93,7 +96,7 @@ class MyWindow:
 
         #Replaces
         #Common OwO
-        dictionary = {"i":"wi", "ea":"ew", "ou":"ow", "ha":"a", "u":"uw", "ee":"eew", "mp":"wp", "m":"mya", "an":"nya", "on":"nyon"} 
+        dictionary = {"i":"wi", "ea":"ew", "ou":"ow", "ha":"a", "u":"uw", "ee":"eew", "mp":"wp", "m":"mya", "an":"nya", "on":"nyon", "r":"w"} 
         for key in dictionary.keys():
             sentence = sentence.replace(key, dictionary[key])
         #Special OwO
@@ -106,11 +109,11 @@ class MyWindow:
             sentence = str(sentence + "OWO")
 
         #Output
-        self.input1.delete('1.0', END)
+        self.input1.delete(0.0, END)
         self.input1.insert(END, sentence)
     
     def clean(self, event):
-        self.input1.delete('1.0', END)
+        self.input1.delete(0.0, END)
 
     def copy(self, event):
         window.clipboard_clear()
@@ -122,8 +125,6 @@ class MyWindow:
     #Menu Functions
     #Infos
     ###
-    def openfile(self, event):
-        awdawd
 
     def demotexts(self):
         self.input1.delete('1.0', END)
@@ -139,7 +140,31 @@ class MyWindow:
         messagebox.showinfo("*Notice the devs*","Version v1.0 - 10/30/2019\nVersion v2.0beta - 10/31/2019\nIn Development...")
 
     def notavaliable(self):
-        messagebox.showwarning("*Notice the error!*","This feature is not avaliable yet!")
+        messagebox.showwarning("*Notice the error!*","This feature is not avaliable yet!")\
+    
+    def file_open(self):
+        # optional initial directory (default is current directory)
+        initial_dir = "C:\Temp"
+        # the filetype mask (default is all files)
+        mask = \
+        [("Text","*.txt"), 
+        ("OwOficated Files","*.owo"), 
+        ("All files","*.*")]        
+        fin = askopenfile(initialdir=initial_dir, filetypes=mask, mode='r')
+        text = fin.read()
+        if text != None:
+            self.input1.delete(0.0, END)
+            self.input1.insert(END, text)
+ 
+    def file_save(self):
+        mask = \
+        [("Text","*.txt"), 
+        ("OwOficated Text Files","*.owo")]    
+        # default extension is optional, here will add .txt if missing
+        fout = asksaveasfile(mode='w', filetypes=mask, defaultextension=".txt")
+        text2save = str(self.input1.get(0.0,END))
+        fout.write(text2save)
+        fout.close()
 
 
 #Windows
