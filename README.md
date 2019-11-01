@@ -10,7 +10,6 @@ Download the standalone .exe of v2.0 >>> [Google Drive!](https://drive.google.co
 ------
 
 ### Features UwU
-------
 * Open and save text files
 * Saved as OwOfied Text File format (.owo)
 * Simple text editor
@@ -19,7 +18,6 @@ Download the standalone .exe of v2.0 >>> [Google Drive!](https://drive.google.co
 * (More features coming soon...)
 
 ### Instruction UwU
-------
 Simply open a text file or type in the text editor area and click the OwOfied button.
 
 ![Alt text](/Graphics/Capture.PNG)
