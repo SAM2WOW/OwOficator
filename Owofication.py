@@ -9,13 +9,6 @@ from time import strftime
 class MyWindow:
     def __init__(self, win):
 
-        #Define Images
-        owomonster = PhotoImage(file = r"C:\Users\fengy\source\repos\OWOficator\owographic.gif") 
-
-        #self.i1 = Label(win, text="input text:", font=("Verdana", 13))
-        #self.i1.grid(row=0, column=0, columnspan=3)
-        #self.i1.place(x=15, y=15)
-
         #Titled Border
         labelframe = LabelFrame(text="Text Editor", bg="#023859", fg="white")
         labelframe.grid(row=0, column=0, columnspan=4, padx=10, pady=5)
@@ -24,24 +17,27 @@ class MyWindow:
         self.input1.grid(row=0, column=0, columnspan=3)
         self.input1.grid_columnconfigure(0, weight=20)
 
-        #Actions Border
+        #Buttons Actions Border
         Actionframe = LabelFrame(text="Actions", bg="#023859", fg="white")
         Actionframe.grid(row=1, column=0, columnspan=3, padx=10, pady=10)
 
-        self.btn = Button(Actionframe, text="OwOfied", font=("Verdana", 15, "bold"), bd=2, bg="#04668C", fg="white")
+        #Buttons Icon
+        self.btnicon = PhotoImage(file = r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\owoface_sm.png").subsample(2, 2)
+        self.btn1icon = PhotoImage(file = r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\Clean_sm.png").subsample(2, 2)
+        self.btn2icon = PhotoImage(file = r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\Copy_sm.png").subsample(2, 2)
+
+        #Buttons
+        self.btn = Button(Actionframe, text="OwOfied", image = self.btnicon, compound = LEFT, font=("Verdana", 15, "bold"), bd=2, bg="#04668C", fg="white")
         self.btn.bind('<Button-1>', self.owofied)
         self.btn.grid(row=2, column=1, padx=10, pady=5)
-        #self.btn.place(x=136, y=240)
 
-        self.btn1 = Button(Actionframe, text="Clean All", font=("Verdana", 15), bd=2, bg="#04668C", fg="white")
+        self.btn1 = Button(Actionframe, text="Clean All", image = self.btn1icon, compound = LEFT, font=("Verdana", 15), bd=2, bg="#04668C", fg="white")
         self.btn1.bind('<Button-1>', self.clean)
         self.btn1.grid(row=2, column=0, padx=10, pady=5)
-        #self.btn1.place(x=30, y=246)
 
-        self.btn2 = Button(Actionframe, text="Copy All", font=("Verdana", 15), bd=2, bg="#04668C", fg="white")
+        self.btn2 = Button(Actionframe, text="Copy All", image = self.btn2icon, compound = LEFT, font=("Verdana", 15), bd=2, bg="#04668C", fg="white")
         self.btn2.bind('<Button-1>', self.copy)
         self.btn2.grid(row=2, column=2, padx=10, pady=5)
-        #self.btn2.place(x=290, y=246)
 
 
         #Border for settings
@@ -56,6 +52,10 @@ class MyWindow:
         self.boxs1 = Checkbutton(settingframe, text="OwO at the end", font=("Verdana", 12), variable=self.boxval1, bg="#023859", fg="#73C6D9")
         self.boxs1.grid(row=2, column=3)
 
+        #Monster
+        #owomonster = PhotoImage(file = r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\owographic.gif") 
+        #self.monster = Label(window, image = owomonster)
+        #self.monster.grid(row=1, column=3)
 
         # Creating Menubar 
         menubar = Menu(window)
@@ -146,7 +146,7 @@ class MyWindow:
 window=Tk()
 mywin=MyWindow(window)
 window.title('OwOficator v2.0 beta                 *Notice*')
-window.iconbitmap(r"C:\Users\fengy\source\repos\OWOficator\owo.ico")
+window.iconbitmap(r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\owo.ico")
 window.configure(bg="#023859")
 window.geometry("770x610")
 window.resizable(False, False)
