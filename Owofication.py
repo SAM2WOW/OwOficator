@@ -1,13 +1,18 @@
 #Tkinter version owofied software
 #by Sam Feng
 
+#Tkinter
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText
 from tkinter import messagebox
+#Time
 from time import strftime
+#FileDialog
 from tkinter import filedialog
 from tkinter.filedialog import askopenfile
 from tkinter.filedialog import asksaveasfile
+#Paths
+import os
 
 class MyWindow:
     def __init__(self, win):
@@ -25,9 +30,13 @@ class MyWindow:
         Actionframe.grid(row=1, column=0, columnspan=3, padx=10, pady=10)
 
         #Buttons Icon
-        self.btnicon = PhotoImage(file = r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\owoface_sm.png").subsample(2, 2)
-        self.btn1icon = PhotoImage(file = r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\Clean_sm.png").subsample(2, 2)
-        self.btn2icon = PhotoImage(file = r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\Copy_sm.png").subsample(2, 2)
+        dirname = os.path.abspath(__file__)
+        btnimage = os.path.join(dirname, '/Users/fengy/source/repos/OWOficator/OwOficator/Graphics/owoface_sm.png')
+        btnimage1 = os.path.join(dirname, '/Users/fengy/source/repos/OWOficator/OwOficator/Graphics/Copy_sm.png')
+        btnimage2 = os.path.join(dirname, '/Users/fengy/source/repos/OWOficator/OwOficator/Graphics/Clean_sm.png')
+        self.btnicon = PhotoImage(file = btnimage).subsample(2, 2)
+        self.btn1icon = PhotoImage(file = btnimage1).subsample(2, 2)
+        self.btn2icon = PhotoImage(file = btnimage2).subsample(2, 2)
 
         #Buttons
         self.btn = Button(Actionframe, text="OwOfied", image = self.btnicon, compound = LEFT, font=("Verdana", 15, "bold"), bd=2, bg="#04668C", fg="white")
@@ -66,7 +75,7 @@ class MyWindow:
         # Adding File Menu and commands 
         files = Menu(menubar, tearoff = 0, bg="#73C6D9") 
         menubar.add_cascade(label ='File', menu = files) 
-        files.add_command(label ='New File', command = self.notavaliable) 
+        files.add_command(label ='New File', command = self.new_file) 
         files.add_command(label ='Open...', command = self.file_open) 
         files.add_command(label ='Save', command = self.file_save) 
         files.add_separator() 
@@ -127,7 +136,7 @@ class MyWindow:
     ###
 
     def demotexts(self):
-        self.input1.delete('1.0', END)
+        self.input1.delete(0.0, END)
         self.input1.insert(END, "I’m designing a document and don’t want to get bogged down in what the text actually says.\nI’m creating a template with various paragraph styles and need to see what they will look like.\nI’m creating a macro and need some text for testing purposes.\nI’m trying to learn more about some feature of OwOficator and don’t want to practice on a real document.")
 
     def showhelp(self):
@@ -137,7 +146,7 @@ class MyWindow:
         messagebox.showinfo("About","~OwOficator~  By SamF")
 
     def showdevlog(self):
-        messagebox.showinfo("*Notice the devs*","Version v1.0 - 10/30/2019\nVersion v2.0beta - 10/31/2019\nIn Development...")
+        messagebox.showinfo("*Notice the devs*","Version v1.0 - 10/30/2019\nVersion v2.0beta - 10/31/2019\nVersion v2.0 - 11/1/2019\nIn Development...")
 
     def notavaliable(self):
         messagebox.showwarning("*Notice the error!*","This feature is not avaliable yet!")\
@@ -165,12 +174,15 @@ class MyWindow:
         text2save = str(self.input1.get(0.0,END))
         fout.write(text2save)
         fout.close()
+    
+    def new_file(self):
+        self.input1.delete(0.0, END)
 
 
 #Windows
 window=Tk()
 mywin=MyWindow(window)
-window.title('OwOficator v2.0 beta                 *Notice*')
+window.title('OwOficator v2.0                 *Notice*')
 window.iconbitmap(r"C:\Users\fengy\source\repos\OWOficator\OwOficator\Graphics\owo.ico")
 window.configure(bg="#023859")
 window.geometry("770x610")
