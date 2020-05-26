@@ -1,4 +1,4 @@
-# OwOficator
+# OwOficator ![license](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)
 
 
 OwOficator is a tool to help you turn your text into OwOfied format.
